@@ -142,7 +142,7 @@ install_node() {
     cd $dir \
 	  && rm -rf $N_PREFIX/include/node \
       && ln -s $dir/include/node $N_PREFIX/include/node \
-	  && rm -f $(ls $dir/bin) \
+	  && rm -f $(ls $dir/bin | sed -e "s#^#$N_PREFIX/bin/#") \
 	  && ln -s $dir/bin/* $N_PREFIX/bin
   # install
   else
