@@ -143,7 +143,8 @@ install_node() {
 	  && rm -rf $N_PREFIX/include/node \
       && ln -s $dir/include/node $N_PREFIX/include/node \
 	  && rm -f $(ls $dir/bin | sed -e "s#^#$N_PREFIX/bin/#") \
-	  && ln -s $dir/bin/* $N_PREFIX/bin
+	  && ln -s $dir/bin/* $N_PREFIX/bin \
+	  && npm -g config set prefix '/usr/local'
   # install
   else
     local tarball="node-v$version.tar.gz"
